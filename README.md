@@ -1,6 +1,7 @@
 # simplekeyval
 
 Node.js service that exposes a simple, string-based key value store as a RESTful API.
+An instance is running at **http://simplekeyval.herokuapp.com**.
 
 ## API
 
