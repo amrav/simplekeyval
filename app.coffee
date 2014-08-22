@@ -10,5 +10,6 @@ server.use restify.bodyParser()
 server.post '/:key', redis.setValue
 server.get '/:key', redis.getValue
 
-server.listen 8080, ->
+port = Number(process.env.PORT || 8080)
+server.listen port, ->
         console.log '%s Listening at %s', server.name, server.url
