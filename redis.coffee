@@ -27,6 +27,8 @@ exports.setValue = (req, res, next) ->
                 redis.HMSET req.params.key, value, ->
                         console.log('Set val', value)
                         res.send 200
+                        # Expire keys after 6 months
+                        redis.EXPIRE req.params.key, 6 * 30 * 24 * 3600
                         return next()
 
 exports.getValue = (req, res, next) ->
