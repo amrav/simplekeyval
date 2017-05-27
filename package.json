@@ -16,6 +16,6 @@
   "dependencies": {
     "coffee-script": "^1.7.1",
     "redis": "^1.0.0",
-    "restify": "^2.8.2"
+    "restify": "^4.3.0"
   }
 }
