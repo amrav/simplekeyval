@@ -14,7 +14,10 @@ exports.setValue = (req, res, next) ->
 
                 console.log "Retrieved hash: ", hash
 
-                if hash.readOnly is 'true' and req.params.secret isnt hash.secret
+                if not hash?
+                        console.log('No value set for key')
+
+                else if hash.readOnly is 'true' and req.params.secret isnt hash.secret
                         console.log('Key is read only')
                         res.send 403
                         return next()
