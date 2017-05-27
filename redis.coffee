@@ -22,7 +22,7 @@ exports.setValue = (req, res, next) ->
                         res.send 403
                         return next()
 
-                value = val: req.params.val
+                value = value: req.params.value
                 if req.params.readOnly? and req.params.secret?
                         value.readOnly = req.params.readOnly
                         value.secret = req.params.secret
@@ -36,15 +36,15 @@ exports.setValue = (req, res, next) ->
 
 exports.getValue = (req, res, next) ->
         console.log 'Asking for value of key %s', req.params.key
-        redis.HGET req.params.key, 'val', (err, val) ->
+        redis.HGET req.params.key, 'value', (err, value) ->
                 if err
                         res.send(500)
                         return next()
 
-                if val?
-                        res.send {key: req.params.key, val: val}
+                if value?
+                        res.send {key: req.params.key, value: value}
                 else
                         res.send 404, 'key not found'
 
-                console.log 'Response from redis: %s', val
+                console.log 'Response from redis: %s', value
                 return next()
